@@ -1,0 +1,538 @@
+/* Strat Variables */
+:root {
+    --main-color: #FF9800;
+    --main-color-alpha : rgb(255 152 0 / 50%);
+}
+/* End Variables */
+/* ========================================================= */
+/* Strat Globale Rules */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+html {
+    scroll-behavior: smooth;
+}
+body {
+    font-family: 'Open Sans', sans-serif;
+}
+ul {
+    list-style: none;
+}
+a {
+    text-decoration: none;
+}
+.container {
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+}
+/* ---- small ---- */
+@media (min-width: 768px) {
+    .container {
+        width: 750px;
+    }
+}
+/* ---- Medium ---- */
+@media (min-width: 992px) {
+    .container {
+        width: 970px;
+    }
+}
+/* ---- Large ---- */
+@media (min-width: 1200px) {
+    .container {
+        width: 1170px;
+    }
+}
+.special-header {
+    color: var(--main-color);
+    font-weight: 900;
+    text-align: center;
+}
+.btnUp {
+    position: fixed;
+    width: 45px;
+    height: 45px;
+    background-color: var(--main-color);
+    z-index: 5000;
+    bottom: 35px;
+    right: -55px;
+    border-radius: 7px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: .6s;
+}
+.btnUp > i {
+    font-size: 24px;
+}
+.scrollPage {
+    height: 5px;
+    background-color: var(--main-color);
+    position: fixed;
+    z-index: 200;
+}
+.loaderPage {
+    position: fixed;
+    background-color: red;
+    width: 100%;
+    height: 100vh;
+    left: 0;
+    top: 0;
+    transition: .7s;
+    z-index: 99999;
+    overflow: hidden;
+}
+.loaderPage > .spiner {
+    position: absolute;
+    background-color: blue;
+    width: 100px;
+    height: 100px;
+    border: 12px solid;
+    border-color: black yellow;
+    border-radius: 50%;
+    left: calc(50% - 50px);
+    top: calc(50% - 50px);
+    animation: loader .75s ease infinite;
+    transition: .7s;
+}
+@keyframes loader {
+    0% {
+        transform: rotate(1);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+/* End Globale Rules */
+/* ++++++++++++++++++++++++++++++++++++++++++++ */
+/* Start Icon Header */
+.icon-header {
+    position: absolute;
+    z-index: 2000;
+    width: 30px;
+    height: 23px;
+    top: 50%;
+    transform: translateY(-50%);
+    right: 50px;
+    cursor: pointer;
+    display: none;
+}
+.icon-header > span {
+    display: block;
+    width: 100%;
+    height: 3px;
+    background-color: black;
+    position: absolute;
+    transition: .5s;
+}
+.icon-header > span:nth-child(1) {
+    top: 0;
+}
+.icon-header > span:nth-child(2) {
+    top: 10px;
+}
+.icon-header > span:nth-child(3) {
+    top: 20px;
+}
+/* End Icon Header */
+/* Start header */
+.header {
+    background-color: transparent;
+    box-shadow: 0px 3px 20px 8px #222;
+    position: absolute;
+    z-index: 100;
+    width: 100%;
+    height: 60.69px;
+}
+.header > .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+@media(max-width : 768px) {
+    .header > .container {
+        display: block;
+    }
+    .icon-header {
+        display: block;
+    }
+}
+.header > .container > .logoPage {
+    width: fit-content;
+}
+.header > .container > .logoPage > a {
+    padding: 20px 25px;
+    display: block;
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--main-color);
+}
+.header > .container > ul.links {
+    display: none;
+}
+@media(min-width : 767px) {
+    .header > .container > ul.links {
+        display: flex;
+    }
+}
+@media(max-width : 768px) {
+    .header > .container > ul.links {
+        flex-direction: column;
+    }
+}
+@media(max-width : 768px) {
+    .header > .container > ul.links > li {
+        border-bottom: 1px solid var(--main-color);
+    }
+}
+.header > .container > ul.links > li > a {
+    padding: 20px 25px;
+    display: block;
+    font-size: 18px;
+    color: white;
+    position: relative;
+}
+
+.header > .container > ul.links > li > a::before {
+    content: "";
+    position: absolute;
+    width: 0;
+    height: 0;
+    background-color: var(--main-color-alpha);
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+    z-index: -1;
+    transition: .5s;
+}
+.header > .container > ul.links > li > a:hover::before {
+    width: 100%;
+    height: 100%;
+}
+/* End header */
+/* ++++++++++++++++++++++++++++++++++++++++++++ */
+/* Start Navigation */
+.nav {
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    width: 225px;
+    padding: 20px;
+    position: fixed;
+    z-index: 100;
+    height: 100vh;
+    bottom: 0;
+    transition: .5s;
+    left: -225px;
+    /* left: 0; */
+}
+.nav > .spin {
+    position: absolute;
+    background-color: white;
+    width: 35px;
+    height: 35px;
+    border-left: 1px solid #ebe7e7;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    right: -35px;
+    top: 90px;
+    cursor: pointer;
+}
+.nav > .spin > i {}
+.nav > .color {
+    text-align: center;
+}
+.nav > .color > h3 {}
+.nav > .color > .colors {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+    margin-top: 12px;
+    margin-bottom: 12px;
+}
+.nav > .color > .colors > span {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    cursor: pointer;
+    opacity: 0.5;
+    transition: .5s;
+}
+.nav > .color > .colors > span.active {
+    border: 1px solid #222;
+}
+.nav > .color > .colors > span.active,
+.nav > .color > .colors > span:hover {
+    opacity: 1;
+}
+.nav > .color > .colors > span:first-child {
+    background-color: #FF9800;
+}
+.nav > .color > .colors > span:nth-child(2) {
+    background-color: #E91E63;
+}
+.nav > .color > .colors > span:nth-child(3) {
+    background-color: #009688;
+}
+.nav > .color > .colors > span:nth-child(4) {
+    background-color: #03A9F4;
+}
+.nav > .color > .colors > span:nth-child(5) {
+    background-color: #4CAF50;
+}
+.nav > .random {
+    text-align: center;
+}
+.nav > .random > h3 {
+    font-size: 17px;
+}
+.nav > .random > .randomm {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+.nav > .random > .randomm > span:not(.active) {
+    opacity: 0.5;
+}
+.nav > .random > .randomm > span {
+    background-color: var(--main-color);
+    color: white;
+    font-weight: 700;
+    padding: 3px 6px;
+    border-radius: 4px;
+    width: 50px;
+    cursor: pointer;
+}
+.nav > .reset {
+    display: flex;
+    margin-bottom: 10px;
+    margin-top: 10px;
+}
+.nav > .reset > button {
+    border: none;
+    font-size: 18px;
+    font-weight: 600;
+    background-color: red;
+    color: white;
+    border-radius: 10px;
+    width: 100%;
+    padding: 10px;
+    cursor: pointer;
+}
+/* End Navigation */
+/* ++++++++++++++++++++++++++++++++++++++++++++ */
+/* Start Landing */
+.landing {
+    background-image: url(../imgs/1.jpg);
+    background-size: cover;
+    width: 100%;
+    height: 100vh;
+    position: relative;
+    transition: .8s;
+}
+.landing::before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    z-index: -1;
+}
+.landing > .container {}
+.landing > .container > .text {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+    text-align: center;
+}
+.landing > .container > .text > h1 {
+    color: white;
+    font-size: 45px;
+}
+.landing > .container > .text > h1 > span {
+    color: var(--main-color);
+}
+.landing > .container > .text > p {
+    font-size: 20px;
+    line-height: 1.9;
+    color: #555;
+}
+@media(max-width : 768px) {
+    .landing > .container > .text > h1 {
+        font-size: 24px;
+    }
+    .landing > .container > .text > p {
+        font-size: 14px;
+    }
+}
+/* End Landing */
+/* ++++++++++++++++++++++++++++++++++++++++++++ */
+/* Start Our Skills */
+.skills {
+    padding-top: 60px;
+    padding-bottom: 60px;
+    background-color: #eee;
+}
+.skills > h1 {}
+.skills > .container {
+    background-color: white;
+    padding: 20px;
+}
+.skills > .container > .skill {
+    display: flex;
+    align-items: center;
+}
+.skills > .container > .skill > p {
+    padding: 15px;
+    flex-basis: 120px;
+    text-align: center;
+}
+.skills > .container > .skill > .size {
+    background-color: #eee;
+    height: 28px;
+    flex: 1;
+    border-radius: 5px;
+    overflow: hidden;
+}
+.skills > .container > .skill > .size > span {
+    display: block;
+    background-color: var(--main-color);
+    height: 100%;
+    transition: .5s;
+    width: 0;
+}
+/* End Our Skills */
+/* ++++++++++++++++++++++++++++++++++++++++++++ */
+/* Start Gallery */
+.gallery {
+    padding-top: 60px;
+    padding-bottom: 60px;
+}
+.gallery > .container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill,250px);
+    gap: 20px;
+    justify-content: center;
+}
+.gallery > .container > .img {
+    width: 250px;
+    border: 1px solid #e1dfdf;
+    cursor: pointer;
+    position: relative;
+}
+/* .gallery > .container > .img:first-child::before {
+    content: "";
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 3000;
+} */
+.gallery > .container > .img > img {
+    width: 100%;
+    height: 100%;
+    padding: 3px;
+    background-color: #eee;
+}
+/* End Gallery */
+/* ++++++++++++++++++++++++++++++++++++++++++++ */
+/* Start Time Line */
+.timeLine {
+    background-color: #eee;
+    padding-top: 60px;
+    padding-bottom: 60px;
+}
+.timeLine > .container {
+    position: relative;
+}
+.timeLine > .container::before {
+    content: "";
+    position: absolute;
+    background-color: var(--main-color);
+    width: 2px;
+    height: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+}
+.timeLine > .container > .content {
+    padding: 20px;
+}
+.timeLine > .container > .content > .year {
+    background-color: var(--main-color);
+    width: fit-content;
+    padding: 4px 8px;
+    border-radius: 4px;
+    color: white;
+    font-weight: 600;
+    margin-bottom: 50px;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+}
+.timeLine > .container > .content > .text {
+    background-color: white;
+    padding: 10px;
+    width: calc(50% - 35px);
+    margin-bottom: 40px;
+    position: relative;
+}
+.timeLine > .container > .content > .text::before {
+    content: "";
+    position: absolute;
+    width: 12px;
+    height: 12px;
+    background-color: white;
+    border: 2px solid var(--main-color);
+    border-radius: 50%;
+    top: 50%;
+    transform: translateY(-50%);
+}
+.timeLine > .container > .content > .text.left::before {
+    right: -43px;
+}
+.timeLine > .container > .content > .text.right::before {
+    left: -43px;
+}
+.timeLine > .container > .content > .text::after {
+    content: "";
+    position: absolute;
+    border: 13px solid;
+    top: 50%;
+    transform: translateY(-50%);
+}
+.timeLine > .container > .content > .text.left::after {
+    right: -26px;
+    border-color: transparent transparent transparent white;
+}
+.timeLine > .container > .content > .text.right::after {
+    left: -26px;
+    border-color: transparent white transparent transparent;
+}
+.timeLine > .container > .content > .text.left {
+    float: left;
+}
+.timeLine > .container > .content > .text.right {
+    float: right;
+}
+.timeLine > .container > .content > .text > h3 {
+    color: var(--main-color);
+    margin-bottom: 10px;
+}
+.timeLine > .container > .content > .text > p {
+    color: #555;
+    line-height: 1.4;
+}
+.clearFloat {
+    clear: both;
+}
+/* End Time Line */
+/* ++++++++++++++++++++++++++++++++++++++++++++ */
